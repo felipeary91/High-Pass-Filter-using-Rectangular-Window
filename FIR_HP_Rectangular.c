@@ -23,12 +23,12 @@ void MATLAB_main(mxComplexDouble* freq_resp, double* filt_data, double* input_da
 
 	//Verifying if Rectangular Window can be used based
 	//on the given stopband ripple
-	if ((-20 * log10(ripple_stopband)) > -44) {
-		printf("Peak stopband attenuation is %0.1f dB, Rectangular Window can be used.\n", -20 * log10(ripple_stopband));
+	if ((-20 * log10(ripple_stopband)) < 23) {
+		printf("Peak stopband attenuation is %0.1f dB, Rectangular Window can be used.\n", 20 * log10(ripple_stopband));
 	}
 	else
 	{
-		printf("Peak stopband attenuation is greater lower than -44 dB, Rectangular Window cannot be used.\n");
+		printf("Peak stopband attenuation is lower than -23 dB, Rectangular Window cannot be used.\n");
 		exit(0);
 	}
 
