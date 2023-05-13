@@ -29,7 +29,7 @@ void MATLAB_main(mxComplexDouble* freq_resp, double* filt_data, double* input_da
 	else
 	{
 		printf("Peak stopband attenuation is lower than -23 dB, Rectangular Window cannot be used.\n");
-		exit(0);
+		return;
 	}
 
 	//Calculating normalized passband and stopband frequencies
@@ -40,7 +40,7 @@ void MATLAB_main(mxComplexDouble* freq_resp, double* filt_data, double* input_da
 	f_cutoff = (f_passband_norm + f_stopband_norm) / 2;
 
 	//Calculating filter_order
-	filter_order = (8 * acos(-1)) / (f_passband_norm - f_stopband_norm);
+	filter_order = (4 * acos(-1)) / (f_passband_norm - f_stopband_norm);
 	if ((filter_order % 2) != 0) {
 		filter_order += 1;
 	}
